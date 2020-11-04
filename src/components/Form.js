@@ -47,8 +47,8 @@ export default function Form() {
   // }
 
   return (
-    <div>
-      <h2>Enter your birthday</h2>
+    <div className="Form">
+      <h2>Ange din födelsdatum.</h2>
       <form>
         <label htmlFor='date'>Datum</label>
         <select value={date} name='date' onChange={dateHandler}>
@@ -60,7 +60,8 @@ export default function Form() {
         {Object.values(Months).map(i => <option value={i}>{months_sv[i]}</option>)}
         </select>
       </form>
-      <h1>{tel}</h1>
+      <p className="ring">Snälla ringer upp:</p>
+      <h1 className="tel">{tel}</h1>
     </div>
   )
 }

@@ -20,6 +20,7 @@ const months_sv = ['Januari', 'Februari', 'Mars', 'April', 'May', 'Juni',
   'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'];
 
 let myMonth = Months.APR;
+myMonth+=3;
 console.log('myMonth', myMonth);
 
 // months_sv.forEach(i => console.log(months_sv.indexOf(i) + ':' + i));
