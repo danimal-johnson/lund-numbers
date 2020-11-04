@@ -21,6 +21,7 @@ Object.freeze(Months);
 const months_sv = ['Januari', 'Februari', 'Mars', 'April', 'May', 'Juni',
   'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'];
 
+const dates = [...Array(31).keys()];
 
 export default function Form() {
   const [tel, setTel] = useState('');
@@ -29,13 +30,15 @@ export default function Form() {
 
   useEffect(() => {
     setTel(getNumber(date, month));
-  }, [month, date]);
+  }, [date, month]);
 
   const monthHandler = e => {
-    setMonth(e.target.value);
+    e.preventDefault();
+    setMonth(parseInt(e.target.value));
   }
   const dateHandler = e => {
-    setDate(e.target.date);
+    e.preventDefault();
+    setDate(parseInt(e.target.value));
   }
 
   // TODO: Put both variables into one object & have only one change handler.
@@ -49,14 +52,13 @@ export default function Form() {
       <form>
         <label htmlFor='date'>Datum</label>
         <select value={date} name='date' onChange={dateHandler}>
-        {[...Array(31).keys()].forEach(i => `<option value="${i+1}">${i+1}</option>`)}
+        {dates.map(i => <option value={i+1}>{i+1}</option>)}
         </select>
 
         <label htmlFor='month'>Månad</label>
         <select value={month} name='month' onChange={monthHandler}>
-        {Object.values(Months).forEach(i => `<option value="${i}">${months_sv[i]}</option>`)}
+        {Object.values(Months).map(i => <option value={i}>{months_sv[i]}</option>)}
         </select>
-        
       </form>
       <h1>{tel}</h1>
     </div>
